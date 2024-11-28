@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Lease2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input N: ");
+        int n = sc.nextInt();
+        if(n > 100 || n < 1){
+            return;
+        }
+        int [] y = new int[n];
+        System.out.print("Input Y: ");
+        for(int i = 0; i < n; i++){
+            y[i] = sc.nextInt();
+        }
+        System.out.print("Input Start Year: ");
+        int startYear = sc.nextInt();
+        
+        System.out.print("Input Year query: ");
+        int queryYear = sc.nextInt();
+        System.out.print("Input Year: ");
+        for(int i = 0; i < queryYear; i++){     //ถามว่า ปีที่กำลังจะถาม มีห้องไหนว่างบ้าง
+            int Year = sc.nextInt();
+            boolean found = false;
+            for(int j = 0; j < n; j++){
+                if(y[j] == 0){
+                    System.out.print((j + 1) + " ");
+                }
+                if(queryYear >= startYear && queryYear < startYear + y[j]){
+                    System.out.print((j + 1) + " ");
+                    found = true;
+                }
+            }
+            System.out.println();
+        }
+        /*if(!found){
+            System.out.print("full");
+        }*/
+    }
+}
