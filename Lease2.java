@@ -15,26 +15,28 @@ public class Lease2 {
         }
         System.out.print("Input Start Year: ");
         int startYear = sc.nextInt();
-        
+        for(int i = 0; i < n; i++){
+            y[i] += startYear - 1;
+        }
         System.out.print("Input Year query: ");
         int queryYear = sc.nextInt();
         System.out.print("Input Year: ");
+        int [] taget = new int[queryYear];  
         for(int i = 0; i < queryYear; i++){     //ถามว่า ปีที่กำลังจะถาม มีห้องไหนว่างบ้าง
-            int Year = sc.nextInt();
-            boolean found = false;
+            taget[i] = sc.nextInt();
+            int count = 0;
             for(int j = 0; j < n; j++){
-                if(y[j] == 0){
-                    System.out.print((j + 1) + " ");
+                if(taget[i] > y[j]){
+                    System.out.print(j + 1 + " ");
+                    count ++;
                 }
-                if(queryYear >= startYear && queryYear < startYear + y[j]){
-                    System.out.print((j + 1) + " ");
-                    found = true;
-                }
-            }
+        }
+        if(count == 0){
+            System.out.println("full");
+        }else{
             System.out.println();
         }
-        /*if(!found){
-            System.out.print("full");
-        }*/
+        
+    }
     }
 }
