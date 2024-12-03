@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ public class Occ2 {
         if(k < 1 || k > 200000){
             return;
         }
-        boolean [] occ = new boolean[n];    //อาเรย์บันทึกการจอง
+        boolean [] occ = new boolean[n + 1];    //อาเรย์บันทึกการจอง
 
         for(int i = 0; i < k; i++){
             int reques = sc.nextInt();
@@ -50,9 +49,6 @@ public class Occ2 {
         if(current > max){
             max = current;
             arr_occ.clear();
-            arr_occ.add(inx);
-        }
-        else if(current == max){
             arr_occ.add(inx);
         }
         System.out.print(max + "\n");
