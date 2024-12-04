@@ -18,10 +18,27 @@ public class Box1 {
            num = sc.nextInt();
            Q = sc.nextInt();
            B = sc.nextInt();
-            if(B > Q){ //หยิบสำเร็จ
-                result = B - Q;
-                System.out.println(result);
-            }
+           for(int j = 0; j < n; j++){
+                if(B > Q && num == 1){ //เช็คว่าจะเอากล่องไหน และใส่เข้าไป
+                    result =  Q + box_pass[j];
+                    box_count[j] = result;  //เก็บสิ่งที่เหลือปัจจุบัน
+                    result = 0;
+                }
+                else if(B < Q && num == 2){
+                    result = Q - box_pass[j];
+                    box_count[j] = result;
+                    result = 0;
+                    //System.out.println(result);
+                }
+                /*
+                 * เช็คว่าถ้าใส่ไม่สำเร็จ พิมเลข -1
+                 * ใส่สำเร็จ พิมจำนวนของที่อยู่ในกล่อง
+                 */
+           }
         }
+        for(int i = 0; i < n; i++){
+            System.out.println(box_count[i]);
+        }
+        sc.close();
     }
 }
