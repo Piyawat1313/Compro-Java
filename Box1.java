@@ -8,37 +8,32 @@ public class Box1 {
         for(int i = 0; i < n; i++){
             box_pass[i] = sc.nextInt();
         }
-        int [] box_count = new int[n];  // กล่องที่นับว่าใส่ไปกี่ชิ้น
         int k = sc.nextInt();
+        int [] box_count = new int[k];      //  กล่องที่นับว่าใส่ไปกี่ชิ้น
         int Q;  //คือจำนวนที่ต้องการใส่หรือหยิบ
         int B;  //หมายเลขกล่องที่ต้องการใส่หรือหยิบของ
         int num;    //เป็น 1 คือใส่เป็น 2 คือหยิบ
-        int result = 0;
         for(int i = 0; i < k; i++){
            num = sc.nextInt();
            Q = sc.nextInt();
            B = sc.nextInt();
-           for(int j = 0; j < n; j++){
-                if(B > Q && num == 1){ //เช็คว่าจะเอากล่องไหน และใส่เข้าไป
-                    result =  Q + box_pass[j];
-                    box_count[j] = result;  //เก็บสิ่งที่เหลือปัจจุบัน
-                    result = 0;
+           int index = B - 1;   //กำหนดการเข้าถึงให้อยู่ตำแหน่งที่ 0
+           if(num == 1){    //ถ้าใส่ของ
+                if(box_count[index] + Q <= box_pass[index]){    //กล่องปัจจุบัน บวกกับของที่ใส่ น้อยกว่า กล่องของเดิมมั้ย
+                    box_count[index] += Q;  //กล่องใหม่บวกเพิ่มเข้าไป
+                    System.out.println(box_count[index]);
+                }else {     //ถ้าไม่สำเร็จปริ้น -1
+                    System.out.println("-1");
                 }
-                else if(B < Q && num == 2){
-                    result = Q - box_pass[j];
-                    box_count[j] = result;
-                    result = 0;
-                    //System.out.println(result);
+           }
+           else if(num == 2){   //ถ้าหยิบออก
+                if(box_count[index] >= Q){  //กล่องปัจจุบัน มากกว่าของที่หยิบไปมั้ย
+                    box_count[index] -= Q;  //กล่องปัจจุบัน - ของที่หยิบออกไป
+                     System.out.println(box_count[index]);
+                }else {
+                    System.out.println("-1");
                 }
-                /*
-                 * เช็คว่าถ้าใส่ไม่สำเร็จ พิมเลข -1
-                 * ใส่สำเร็จ พิมจำนวนของที่อยู่ในกล่อง
-                 */
            }
         }
-        for(int i = 0; i < n; i++){
-            System.out.println(box_count[i]);
-        }
-        sc.close();
     }
 }
