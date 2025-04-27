@@ -4,25 +4,46 @@ public class TargetLand {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[]Arr = new int[n];
-        for(int i = 0; i < n; i++){ //loop ราคาของแต่ละพื้นที่
-            Arr[i] = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
         }
-        int round_Price = sc.nextInt(); //จำนวนการสอบถามราคา
-        for(int i = 1; i <= round_Price; i++){
-            int want_k = sc.nextInt();  //พื้นที่ ที่ต้องการ
-            int number_want = sc.nextInt(); //หมายเลขแปลงที่อยู่ตรงกลาง
-            int half = want_k / 2;  //ตัวแปร half ช่วยในการหาค่าตรงกลาง
-            int start = number_want - 1 - half; // จุดเริ่มต้น
-            int stop = number_want - 1 + half;  //จุดสิ้นสุด
-            if(start < 0 || stop >= n){ //เช็คว่า ช่วงเริ่มต้น กับ จุดสิ้นสุด น้อยกว่า 0 หรือ เกินขอบเขตหรือไม่
-                System.out.println("no");
-            } else {
-                int total = 0; //ตัวแปรสำหรับ คำนวณผลรวม
-                for(int j = start; j <= stop; j++){ //loop สำหรับคำนวนจำนวนพื้นที่
-                    total += Arr[j];
+        int Q_price = sc.nextInt();
+        int sum = 0;
+        int sum_more = 0;
+        boolean ch = true;
+        for (int i = 1; i <= Q_price; i++) {
+            int m = sc.nextInt(); // แปลงที่ดินตรงกลาง
+            int k = sc.nextInt(); // จำนวนที่ดิน
+            int half = ((m - 1) / 2);
+            int left = k - half;; // หาแปลงซ้าย
+            int right = k + half; // หาแแปลงขวา
+            System.out.println("left: " + left + " " + "Right: " + right);
+            if (left >= 1 && right <= n) { // เช็คว่าทางซ้ายมากกว่า 1 มั้ย และทางขวา ต้องไม่เกินขนาดอาเรย์
+                ch = true;
+                sum = 0;
+                for (int j = left - 1; j < right; j++) { // loop หาแปลงด้านซ้าย ด้านขวา
+                    System.out.print("j: " + j + " ");
+                    System.out.println("arr: " + arr[j]);
+                    sum += arr[j]; // นำค่าที่อยู่ในอาเรย์แต่ละช่อง มัดรวมกัน
                 }
-                System.out.println(total);
+                //System.out.println("sum: " + sum);
+            }else{
+                int start = Math.max(1, left);
+                int stop = Math.min(n, right);
+                System.out.println("Star: " + start + " Stop: " + stop);
+                sum_more = 0;
+                for (int j = start; j <= stop; j++) {
+                    sum_more += arr[j - 1];
+                    System.out.println("J: " + j + " ARR: " + arr[j - 1] + " ");
+                }
+                ch = false;
+            }
+            if(!ch){
+               // System.out.println("no " + sum_more);
+            }
+            else{
+                //System.out.println(sum);
             }
         }
         sc.close();
