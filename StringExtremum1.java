@@ -3,38 +3,37 @@ import java.util.Scanner;
 public class StringExtremum1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int number = sc.nextInt();  //รับเลขมา ว่าเป็น 1 หรือ 2
-        sc.nextLine();  //รับค่าทิ้งไป
-        int countString = 0;
-        String text = "";  
-        int max;    
-        if(number == 1){    //ถ้าเป็น 1
-            max = 0;    //reset max = 0
-        }else{  //ถ้าเป็น 2 
-            max = Integer.MAX_VALUE;    //max เป็นค่ามากที่สุด
-        }
-        String space = "";  //สตริงว่างๆ
-       while(true){
-         text = sc.nextLine();  //รับสตริง
-            if(text.isEmpty()){ //isEmpty คือ ถ้าว่าง
-                break;  //หยุด
+        int number = sc.nextInt();
+        sc.nextLine();
+        String str = "";
+        int max = Integer.MIN_VALUE;
+        String text1 = "";
+        int min = Integer.MAX_VALUE;
+        String text2 = "";
+        while (true) {
+            str = sc.nextLine();
+            if (str.isEmpty()) {
+                break;
             }
-            countString = text.length();    //เก็บขนาดของข้อความ
-             if(number == 1){   //ถ้าเป็น 1
-                if(countString  >= max){ //ขนาดข้อความมาก max   
-                    max = countString; // max เก็บ ขนาดตัวอักษรไว้
-                    space = text;   //เก็บข้อความ
-                }
+            if (str.length() >= max) {
+                max = str.length();
+                text1 = str;
             }
-            else if(number == 2){   //ถ้าเป็น 2
-                if(countString <= max){ //ขนาดของข้อความน้อยกว่า max 
-                    max = countString;  //max เก็บ ขนาดของข้อความ
-                    space = text;   //เก็บข้อความ
-                }
+            else if(str.length() <= min){
+                min = str.length();
+                text2 = str;
             }
         }
-        System.out.println(max);
-        System.out.println(space);
+        switch (number) {
+            case 1:  
+            System.out.println(max);
+            System.out.println(text1);
+            break;
+            case 2: 
+            System.out.println(min);
+            System.out.println(text2);
+            break;
+        }
+        sc.close();
     }
 }
-
