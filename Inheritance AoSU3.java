@@ -80,7 +80,7 @@ class Team {
         if (name == null || name.length > 5 || name.length < 5) {
             return false;
         } else {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) {        //วิธีเช็คทั้งทีม หรือ ทั้งอาเรย์ว่ามีอะไรเหมือนมั้ย
                 for (int j = i + 1; j < 5; j++) {
                     if (name[i].name.equals(name[j].name)) {
                         System.out.println("cannot select same hero: " + name[i].name);
