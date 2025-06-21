@@ -46,7 +46,9 @@ class WaterPokimon extends Pokimon {
     WaterPokimon(PokiStats stats, String name, int level) {
         super(stats, name, level);
     }
-
+    /*
+     * Overloding
+     */
     int attack(WaterPokimon opp) {
         return super.attack();
     }
@@ -64,7 +66,9 @@ class FirePokimon extends Pokimon {
     FirePokimon(PokiStats stats, String name, int level) {
         super(stats, name, level);
     }
-
+    /*
+     * Overloding
+     */
     int attack(WaterPokimon opp) {
         return super.attack();
     }
@@ -82,7 +86,9 @@ class ElectricPokimon extends Pokimon {
     ElectricPokimon(PokiStats stats, String name, int level) {
         super(stats, name, level);
     }
-
+    /*
+     * Overloding
+     */
     int attack(WaterPokimon opp) {
         return super.attack() * 2;
     }
@@ -96,7 +102,7 @@ class ElectricPokimon extends Pokimon {
     }
 }
 
-public class Pokimon3 {
+public class Pokimon1 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int[] hps = new int[6];
