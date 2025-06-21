@@ -3,16 +3,16 @@ import java.util.Scanner;
 
 public class SeparateCharactersAndNumbers {
     static String split(String msg) {
-        if(msg.isEmpty()){
+        if(msg.isEmpty()){        //break;
             return "";
         }
-        char C = msg.charAt(0);
-        String res = split(msg.substring(1));
-        if(Character.isDigit(C)){
-            return res + C;
+        char C = msg.charAt(0);    //เก็บตัวแรก
+        String res = split(msg.substring(1));    //ไม่เอาตัวแรก
+        if(Character.isDigit(C)){        //ถ้าเป็นตัวเลข
+            return res + C;        //ข้อความ + ตัวเลข
         }
         else{
-            return C + res;
+            return C + res;        //ตัวเลข + ข้อความ 
         }
     }
 
